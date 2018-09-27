@@ -6,22 +6,26 @@
 </head>
 
 <body>
+  <section>
+    <header>
+      <h1>Dilution Helper</h1>
+    </header>
 
-  <h1>Dilution Helper</h1>
+    <article>
+      <div>
+        <input id="totalVolumeMax" type="number" placeholder="Max Volume (2000 mL)" />
+        <input id="decimals" type="number" placeholder="# Decimals (0)" />
+      </div>
+      <div>
+        <input id="dilutedConcentration" type="number" placeholder="Diluted (μg/mL)" />
+        <input id="stockConcentration" type="number" placeholder="Stock (μg/mL)" />
+      </div>
 
-  <div>
-    <input id="totalVolumeMax" type="number" placeholder="Max Volume (2000 mL)" />
-    <input id="decimals" type="number" placeholder="# Decimals (0)" />
-  </div>
-  <div>
-    <input id="dilutedConcentration" type="number" placeholder="Diluted (μg/mL)" />
-    <input id="stockConcentration" type="number" placeholder="Stock (μg/mL)" />
-  </div>
+      <ul id="results">
 
-  <ul id="results">
-
-  </ul>
-
+      </ul>
+    </article>
+  </section>
   <script src="./main.js"> </script>
 </body>
 
