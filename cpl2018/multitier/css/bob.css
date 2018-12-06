@@ -1,0 +1,238 @@
+/* positive, negative and normal lists */
+
+.reveal .hide:not(.current-fragment) {
+    display: none;
+}
+
+.reveal ul,
+.reveal ul ul {
+    list-style-type: none;
+}
+
+.reveal ul li::before {
+    content: "𝅍 ";
+    font-size: 30px;
+    vertical-align: top;
+    color: #3F98BD;
+}
+
+ul.pos-list li::before {
+    content: "⊞ ";
+    font-size: 20px;
+    vertical-align: top;
+    color: #3E853D;
+}
+
+ul.neg-list li::before {
+    content: "⊟ ";
+    font-size: 20px;
+    vertical-align: top;
+    color: #A33A3A;
+}
+
+.right-block-title {
+    text-align: right;
+    margin-bottom: 50px
+}
+
+.left-block-background {
+    background-color: #3F98BD;
+    width: 100%;
+    height: 9999999%;
+    position: absolute;
+    top: -999%;
+    left: -75%;
+    z-index: -1;
+}
+
+div.left-block {
+    width: 15%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.left-block h1,
+div.left-block h2,
+div.left-block h3,
+div.left-block h4 {
+    color: white;
+}
+
+div.right-block {
+    width: 65%;
+    display: inline-block;
+    margin-left: 15%;
+    height: 200%;
+}
+
+.line {
+    display: block;
+}
+
+.line.focus {
+    background: #EEE;
+}
+
+.reveal .progress {
+    color: #3F98BD;
+}
+
+.reveal pre,
+.reveal code {
+    box-shadow: none;
+    font-family: 'Inconsolata', monospace;
+    font-size: .8em;
+}
+
+.reveal pre code {
+    max-height: 100%;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    font-family: "Dosis", sans-serif;
+}
+
+.reveal h1::before {
+    content: "🞌";
+    font-family: "Dosis", sans-serif;
+    color: #3F98BD;
+    position: relative;
+    top: -80px;
+    left: -10px;
+}
+
+.reveal {
+    font-family: "Lato", sans-serif;
+}
+
+.reveal pre {
+    margin: 0 auto;
+}
+
+.hljs.monkey {
+    padding: 0;
+}
+
+/* timeline settings */
+
+.tl-menubar,
+.tl-attribution,
+.tl-slidenav-next,
+.tl-slidenav-previous {
+    display: none !important;
+}
+
+.tl-text .tl-headline-date,
+.tl-text h3.tl-headline-date {
+    font-size: 1.2em;
+    line-height: 1.2;
+}
+
+.tl-timeline h2.tl-headline-title,
+h2.tl-headline {
+    font-size: 2.11em;
+    line-height: 1.2;
+}
+
+.tl-text-content p {
+    font-size: 100%;
+}
+
+/* years */
+
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/* between-years */
+
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-minor .tl-timeaxis-tick {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+/* small flag in timeline */
+
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline,
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline p {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+/* clean images without border */
+
+.reveal section img {
+    border: none;
+    box-shadow: none;
+}
+
+#poop {
+    height: 500px;
+}
+
+#poop {
+    animation: wiggle 1s infinite;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.highlight {
+    text-decoration: underline;
+    text-decoration-color: #3F98BD;
+}
+
+.delight {
+    color: #999;
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'),
+    url('../fonts/lato-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/lato-v14-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Inconsolata Regular'), local('Inconsolata-Regular'),
+    url('../fonts/inconsolata-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/inconsolata-v16-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dosis Regular'), local('Dosis-Regular'),
+    url('../fonts/dosis-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('../fonts/dosis-v7-latin-regular.woff') format('woff');
+    /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}

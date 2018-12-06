@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Multi-tier Programming Languages</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/github-gist.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Lato|Inconsolata" rel="stylesheet">
+
+    <!-- TimelineJS -->
+    <link title="timeline-styles" rel="stylesheet" href="lib/timeline3/css/timeline.css">
+    <script src="lib/timeline3/js/timeline.js"></script>
+    <script src="lib/cson/cson.js"></script>
+
+    <!-- My theme -->
+    <link rel="stylesheet" href="css/bob.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown="example.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:" data-charset="iso-8859-15">
+                <!--
+        Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
+        For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
+    -->
+            </section>
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            fragments: true,
+            history: true,
+
+            controls: false,
+            controlsTutorial: false,
+
+            slideNumber: 'c',
+
+            center: true,
+            mouseWheel: true,
+            transition: 'fade',
+            transitionSpeed: 'fast',
+            backgroundTransition: 'none',
+
+            width: 1024,
+            height: 768,
+
+            keyboard: {
+                74: 'next',
+                75: 'prev'
+            },
+
+            dependencies: [{
+                    src: 'plugin/markdown/marked.js'
+                },
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function() {
+                        hljs.initHighlightingOnLoad();
+                    }
+                },
+                {
+                    src: 'node_modules/reveal-code-focus/reveal-code-focus.js',
+                    async: true,
+                    callback: function() {
+                        RevealCodeFocus();
+                    }
+                }
+            ]
+        });
+    </script>
+
+    <script type="text/javascript">
+        Reveal.addEventListener("ready", () => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "timeline.cson");
+            xhr.onload = () => {
+                const timelineJson = CSON.parse(xhr.responseText);
+                // The TL.Timeline constructor takes at least two arguments:
+                // the id of the Timeline container (no '#'), and
+                // the URL to your JSON data file or Google spreadsheet.
+                // the id must refer to an element "above" this code,
+                // and the element must have CSS styling to give it width and height
+                // optionally, a third argument with configuration options can be passed.
+                // See below for more about options.
+                timeline = new TL.Timeline(document.getElementById('timeline-embed'), timelineJson, {
+                    "duration": 250
+                });
+            };
+            xhr.send();
+        });
+    </script>
+
+</body>
+
+</html>
