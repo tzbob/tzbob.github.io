@@ -2,10 +2,17 @@
 ## CPL 2018
 ### Bob Reynders
 
-note: 
-
 
 <div id='timeline-embed' style="width: 100%; height: 600px"></div>
+
+Note: 
+go through important milestones of the web
+
+who:
+- makes websites?
+- writes html?
+- has written php?
+- javascript?
 
 
 ### Web Development
@@ -17,13 +24,14 @@ note:
 - <!-- .element: class="fragment" --> <span class="delight">beautify with</span> CSS.
 
 
-<h3 class="right-block-title">Alert <a>localhost/hello/cpl</a></h3>
+<h3 class="right-block-title">Alert <a onclick="window.alert('cpl')">localhost/hello/cpl</a></h3>
 
 <div class="left-block-background">
 </div>
 <div>
     <div class="left-block">
 <h4 class="fragment hide" data-code-focus="1-10">Scala</h4>
+<h4 class="fragment hide" data-code-block="2" data-code-focus="1-3">JS</h4>
 <h4 class="fragment hide" data-code-focus="2">Grab Name</h4>
 <h4 class="fragment hide" data-code-focus="3-6">Setup HTML</h4>
 <h4 class="fragment hide" data-code-focus="5">Setup JS</h4>
@@ -53,6 +61,11 @@ note:
     </div>
 </div>
 
+note:
+- what does this program do?
+- explain ...
+- what is missing?
+
 
 Design <span class="delight">(CSS)</span>
 
@@ -63,6 +76,10 @@ Design <span class="delight">(CSS)</span>
 - <!-- .element: class="fragment" --> Complex
 - <!-- .element: class="fragment" --> No guarantees
 - <!-- .element: class="fragment" --> <span class="highlight">4</span>/10 OWASP top security risks
+note:
+- owasp top ten is an awareness document for web application security
+- 4 of these issues come from problems in the boundary
+- in short, the current state of the web is pretty shitty
 
 
 <img src="img/poop.svg" id="poop"></img>
@@ -72,7 +89,12 @@ Design <span class="delight">(CSS)</span>
 
 - <!-- .element: class="fragment" --> Frameworks
 - <!-- .element: class="fragment" --> Libraries
-- <!-- .element: class="fragment" --> <span class="delight">Embedded</span> Languages
+<!-- j -->
+  - <!-- .element: class="fragment" --> <span class="delight">Embedded</span> Languages
+
+note:
+- things are still being made
+- how does industry do this?
 
 
 ## Frameworks
@@ -82,8 +104,17 @@ Design <span class="delight">(CSS)</span>
 - <!-- .element: class="fragment" --> <span class="delight">requires</span> one-size-fits-all
 - <!-- .element: class="fragment" --> Ruby on Rails, Django, JSF, ...
 
+note:
+- problem with frameworks -> not very flexible, follow one way 
+- if problem that does not fit the approach then it's hard to extend
+
 
 ## Libraries & <span class="delight">Embedded</span> Languages
+
+note:
+- libraries that add embedded languages or 
+- closely resemble language features
+- show some examples
 
 
 <h3 class="right-block-title">Bridge HTML & JavaScript</h3>
@@ -120,6 +151,12 @@ ReactDOM.render(
 <span class="fragment" data-code-focus="4-6"></span>
 <span class="fragment" data-code-focus="12-12"></span>
 
+note:
+- react unifies html and javascript 
+- create declarative UIs
+- create component
+- use component as html tag
+
 
 <h3 class="right-block-title">Bridge Server & Database</h3>
 
@@ -153,10 +190,18 @@ $books = BookQuery::create()
 <span class="fragment" data-code-focus="1-9"></span>
 <span class="fragment" data-code-focus="11-15"></span>
 
+note:
+- object relational mapping 
+- PHP
+- allow database queries without SQL
+- compile to SQL
+
 
 ### A lot more!
 
-- <!-- .element: class="fragment" --> Part of the problem
+- <!-- .element: class="fragment" --> Hot topic: 
+  - <!-- .element: class="fragment" --> e.g. "JavaScript Frontend Framework"
+  - <!-- .element: class="fragment" --> 18 with at least 1k Github Stars
 - <!-- .element: class="fragment" --> <span class="delight">more</span> fragmentation
 - <!-- .element: class="fragment" --> even within languages
 
