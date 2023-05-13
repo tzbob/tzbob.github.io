@@ -3,86 +3,131 @@
 
 <head>
     <title>Webcam Video Delay</title>
+
+    <style>
+        #current-video {
+            visibility: hidden;
+            width: 0px;
+            height: 0px;
+        }
+
+        #webcam {
+            position: relative;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Webcam Video Delay</h1>
+    <canvas id="delayed-video"></canvas>
+    <video id="webcam" autoplay></video>
 
-        <video id="webcam" autoplay></video>
-        <canvas id="current-video"></canvas>
-        <canvas id="delayed-video"></canvas>
+    <canvas id="current-video">
+    </canvas>
+
+    <p id="data""></p>
+    <input id="delayInput" type="number"/>
 
     <script>
         // Get the webcam video stream
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-                const videoEl = document.getElementById('webcam');
-                videoEl.srcObject = stream;
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                width: { ideal: 4096 },
+                height: { ideal: 2160 }
+            }
+        }).then(function (stream) {
+            const videoEl = document.getElementById('webcam');
+            console.log(stream.getVideoTracks()[0].getSettings());
+            const webcamSettings = stream.getVideoTracks()[0].getSettings();
+            videoEl.srcObject = stream;
 
-                // Create a canvas to display the delayed video
-                const currentCanvas = document.getElementById('current-video');
-                const currentCtx = currentCanvas.getContext('2d', { willReadFrequently: true} );
-                currentCtx.will
+            let w = webcamSettings.width;
+            let h = webcamSettings.height;
 
-                const delayedCanvas = document.getElementById('delayed-video');
-                const delayedCtx = delayedCanvas.getContext('2d');
+            videoEl.width = .2 * w;
+            videoEl.height = .2 * h;
+            videoEl.style.left = `-${videoEl.width}px`;
 
-                let w = 0;
-                let h = 0;
+            // Create a canvas to display the delayed video
+            const currentCanvas = document.getElementById('current-video');
+            const currentCtx = currentCanvas.getContext('2d', { willReadFrequently: true });
 
-                // Set canvas dimensions to match video
-                videoEl.addEventListener('loadedmetadata', function () {
-                    w = videoEl.videoWidth;
-                    h = videoEl.videoHeight;
+            const delayedCanvas = document.getElementById('delayed-video');
+            const delayedCtx = delayedCanvas.getContext('2d');
 
-                    videoEl.width = w;
-                    videoEl.height = w;
+            currentCanvas.width = w;
+            currentCanvas.height = h;
 
-                    currentCanvas.width = w;
-                    currentCanvas.height = h;
+            delayedCanvas.width = w;
+            delayedCanvas.height = h;
 
-                    delayedCanvas.width = w;
-                    delayedCanvas.height = h;
+            const dataEl = document.getElementById('data');
 
-                    // Create a buffer to store frames
-                    const buffer = [];
-                    const bufferSize = 10; // Number of seconds to delay
+            let delayInMs = 2000;
+            const inputEl = document.getElementById('delayInput');
+            inputEl.value = delayInMs;
+            inputEl.onchange = e => delayInMs = e.currentTarget.value;
 
-                    console.log(w);
-                    console.log(h);
+            // Set canvas dimensions to match video
+            videoEl.addEventListener('loadedmetadata', function (e) {
+                console.log(e);
+                w = videoEl.videoWidth;
+                h = videoEl.videoHeight;
 
-                    // Function to process video frames
-                    function processFrame() {
-                        // Draw the current video frame on the canvas
-                        currentCtx.drawImage(videoEl, 0, 0, w, h);
+                const perfectFrameTime = 1000 / webcamSettings.frameRate;
 
-                        // Store the frame in the buffer
-                        buffer.push(currentCtx.getImageData(0, 0, w, h));
+                // Create a buffer to store frames
+                const buffer = [];
 
-                        // Remove frames older than the buffer size
-                        if (buffer.length > bufferSize * 30) {
-                            buffer.splice(0, buffer.length - bufferSize * 30);
+                console.log(w);
+                console.log(h);
+
+                let lastBufferTime = performance.now();
+                let lastRafTime = lastBufferTime;
+
+                // Function to process video frames
+                function rafLoop() {
+                    const rafStartTime = performance.now();
+                    const rafInterval = rafStartTime - lastRafTime;
+                    lastRafTime = rafStartTime;
+                    const bufferInterval = rafStartTime - lastBufferTime;
+
+                    currentCtx.drawImage(videoEl, 0, 0, w, h);
+
+                    if (bufferInterval * 2 >= perfectFrameTime) {
+                        lastBufferTime = performance.now();
+                        buffer.push({
+                            time: lastBufferTime,
+                            image: currentCtx.getImageData(0, 0, w, h)
+                        });
+                    }
+
+                    if (buffer.length > 0) {
+                        let droppingFrames = true;
+                        while (droppingFrames) {
+                            const delay = rafStartTime - buffer[0].time;
+                            if (delay - perfectFrameTime >= delayInMs) {
+                                buffer.shift();
+                            } else {
+                                droppingFrames = false;
+                            }
                         }
 
-                        // Schedule the next frame processing
-                        requestAnimationFrame(processFrame);
-                    };
+                        delayedCtx.putImageData(buffer[0].image, 0, 0);
 
-                    processFrame();
-
-                    function drawBuffer() {
-                        if (buffer.length == bufferSize * 30) {
-                            const imgData = buffer.shift()
-                            delayedCtx.putImageData(imgData, 0, 0);
+                        const delay = rafStartTime - buffer[0].time;
+                        if (delay <= delayInMs) {
+                            dataEl.innerHTML = `Buffering: ${Number(delay).toFixed(2)}ms!`;
+                        } else {
+                            dataEl.innerHTML = `Finished buffering!`;
                         }
+                    } 
 
-                        // Schedule the next frame processing
-                        requestAnimationFrame(drawBuffer);
-                    };
+                    requestAnimationFrame(rafLoop);
+                };
 
-                    drawBuffer();
-                });
-            })
+                rafLoop();
+            });
+        })
             .catch(function (error) {
                 console.error('Error accessing webcam:', error);
             });
