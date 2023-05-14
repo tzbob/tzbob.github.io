@@ -114,18 +114,19 @@
                         let droppingFrames = true;
                         while (droppingFrames) {
                             const delay = rafStartTime - buffer[0].time;
-                            if (delay - perfectFrameTime >= delayInMs) {
+                            if (delay - 2*perfectFrameTime >= delayInMs) {
                                 buffer.shift();
                             } else {
                                 droppingFrames = false;
                             }
                         }
 
-                        delayedCtx.putImageData(buffer[0].image, 0, 0);
+                        const currentFrame = buffer[0];
+                        delayedCtx.putImageData(currentFrame.image, 0, 0);
 
-                        const delay = rafStartTime - buffer[0].time;
+                        const delay = rafStartTime - currentFrame.time;
                         if (delay <= delayInMs) {
-                            dataEl.innerHTML = `Buffering: ${Number(delay).toFixed(2)}ms!`;
+                            dataEl.innerHTML = `Buffering: ${delay}ms!`;
                         } else {
                             dataEl.innerHTML = `Finished buffering!`;
                         }
