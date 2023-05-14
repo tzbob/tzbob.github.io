@@ -40,8 +40,8 @@
             audio: false,
             video: {
                 facingMode: 'user',
-                width: { ideal: 4096 },
-                height: { ideal: 2160 }
+                width: { ideal: window.screen.width },
+                height: { ideal: window.screen.height }
             }
         }).then(function (stream) {
             const videoEl = document.getElementById('webcam');
@@ -90,12 +90,12 @@
                 console.log(w);
                 console.log(h);
 
-                let lastBufferTime = performance.now();
+                let lastBufferTime = Date.now();
                 let lastRafTime = lastBufferTime;
 
                 // Function to process video frames
                 function rafLoop() {
-                    const rafStartTime = performance.now();
+                    const rafStartTime = Date.now();
                     const rafInterval = rafStartTime - lastRafTime;
                     lastRafTime = rafStartTime;
                     const bufferInterval = rafStartTime - lastBufferTime;
@@ -103,7 +103,7 @@
                     currentCtx.drawImage(videoEl, 0, 0, w, h);
 
                     if (bufferInterval * 2 >= perfectFrameTime) {
-                        lastBufferTime = performance.now();
+                        lastBufferTime = Date.now();
                         buffer.push({
                             time: lastBufferTime,
                             image: currentCtx.getImageData(0, 0, w, h)
