@@ -10,13 +10,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Azeret Mono:wght@500&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/delay/assets/index-ff744605.js"></script>
-  <link rel="stylesheet" href="/delay/assets/index-c0424db9.css">
+  <script type="module" crossorigin src="/delay/assets/index-b8a08c18.js"></script>
+  <link rel="stylesheet" href="/delay/assets/index-574ff62d.css">
 </head>
 
 <body>
-  <div id="backgrounded-container">
-    <canvas id="delayed-video"></canvas>
+  <div id="backgrounded-container" class="fullscreen">
+    <canvas id="delayed-video" width="0" height="0"></canvas>
   </div>
 
   <nav id="settings" hidden="true">
@@ -32,12 +32,12 @@
     </a>
   </nav>
 
-  <form id="delay-form" onsubmit="event.preventDefault();">
+  <div id="delay-form">
     <label for="delay-in-ms">
       <input id="delay-in-ms" type="number">
       delay (ms)
     </label>
-  </form>
+  </div>
 
 
   <video id="webcam" autoplay></video>
