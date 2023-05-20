@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Azeret Mono:wght@500&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/delay/assets/index-69f88940.js"></script>
-  <link rel="stylesheet" href="/delay/assets/index-d9f6b5b0.css">
+  <script type="module" crossorigin src="/delay/assets/index-77d2edfc.js"></script>
+  <link rel="stylesheet" href="/delay/assets/index-083d7d08.css">
 </head>
 
 <body>
@@ -19,22 +19,34 @@
     <canvas id="delayed-video" width="0" height="0"></canvas>
   </div>
 
-  <div id="menu-button" onclick="this.classList.toggle('change')">
+  <div id="menu-button">
     <div></div>
     <div></div>
     <div></div>
   </div>
 
-  <nav id="settings" class="fullscreen">
+  <nav id="settings" class="fullscreen hidden">
     <ul>
       <li>
         <label>
-          <input type="checkbox" id="toggle-mirror" /> mirror video
+          resolution
+          <select name="resolution" id="resolution-select">
+          </select>
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" id="toggle-mirror" checked="true" /> mirror video
         </label>
       </li>
       <li>
         <label>
           <input type="checkbox" id="toggle-feed" /> show live feed
+        </label>
+      </li>
+      <li>
+        <label>
+          <input type="checkbox" id="toggle-data" checked="true" /> show data
         </label>
       </li>
     </ul>
@@ -49,9 +61,7 @@
 
   <video id="webcam" autoplay></video>
 
-  <small>
-    <p id="data"></p>
-  </small>
+  <p id="data"></p>
 
   
   <!-- Cloudflare Web Analytics -->
