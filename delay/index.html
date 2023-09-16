@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+  <head>
+    <title>Video Delay</title>
 
-<head>
-  <title>Video Delay</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Azeret Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/delay/assets/index-9b0a2b0a.js"></script>
+    <link rel="stylesheet" href="/delay/assets/index-2799dc13.css">
+  </head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Azeret Mono:wght@500&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/delay/assets/index-7c1c763d.js"></script>
-  <link rel="stylesheet" href="/delay/assets/index-2799dc13.css">
-</head>
+  <body>
+    <div id="backgrounded-container" class="fullscreen">
+      <video id="delayed-video-video" autoplay></video>
+    </div>
 
-<body>
-  <div id="backgrounded-container" class="fullscreen">
-    <video id="delayed-video-video" autoplay></video>
-  </div>
+    <div id="menu-button">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
 
-  <div id="menu-button">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+    <nav id="settings" class="fullscreen hidden">
+      <ul>
+        <li>
+          <label>
+            resolution
+            <select name="resolution" id="resolution-select"></select>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="toggle-mirror" /> mirror video
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" id="toggle-feed" /> show live feed
+          </label>
+        </li>
+        <li>
+          <label> <input type="checkbox" id="toggle-data" /> show data </label>
+        </li>
+      </ul>
+    </nav>
 
-  <nav id="settings" class="fullscreen hidden">
-    <ul>
-      <li>
-        <label>
-          resolution
-          <select name="resolution" id="resolution-select">
-          </select>
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" id="toggle-mirror" checked="true" /> mirror video
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" id="toggle-feed" /> show live feed
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" id="toggle-data" checked="true" /> show data
-        </label>
-      </li>
-    </ul>
-  </nav>
+    <div id="delay-form">
+      <label for="delay-in-ms">
+        <input id="delay-in-ms" type="number" />
+        delay(ms)
+      </label>
+    </div>
 
-  <div id="delay-form">
-    <label for="delay-in-ms">
-      <input id="delay-in-ms" type="number">
-      delay(ms)
-    </label>
-  </div>
+    <video id="webcam" autoplay></video>
 
-  <video id="webcam" autoplay></video>
+    <p id="data"></p>
 
-  <p id="data"></p>
-
-  
-  <!-- Cloudflare Web Analytics -->
-  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-    data-cf-beacon='{"token": "68df2a9ae7f64745867888552b609a66"}'></script><!-- End Cloudflare Web Analytics -->
-</body>
-
+    
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "68df2a9ae7f64745867888552b609a66"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
+  </body>
 </html>
