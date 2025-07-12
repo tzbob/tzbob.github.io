@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>warp-lens</title>
+    <script type="module" crossorigin src="/assets/index-BsA-OBks.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BGbGJs77.css">
+  </head>
+  <body>
+    <progress hidden></progress>
+    <header class="frosted-background">
+      <div class="container">
+        <nav>
+          <ul>
+            <li>
+              <span class="label s">
+                <input
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]{6}"
+                  maxlength="6"
+                  id="delay-s"
+                  placeholder="8"
+                />
+              </span>
+            </li>
+          </ul>
+
+          <ul id="header">
+            <li><img id="header-img" width="24" height="24" hidden /></li>
+          </ul>
+
+          <ul class="icons with-background">
+            <li>
+              <a id="toggle-play" href="#" onclick="return false;">
+                <i data-feather="pause"></i>
+              </a>
+            </li>
+            <li>
+              <a id="save" href="#" onclick="return false;">
+                <i data-feather="save"></i>
+              </a>
+            </li>
+            <li>
+              <a id="expand-settings" href="#" onclick="return false;">
+                <i data-feather="settings"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <video id="preview" class="preview" autoplay playsinline></video>
+    <canvas id="preview-canvas" class="preview"></canvas>
+    <video id="delayed" class="fixed-background" playsinline></video>
+    <div id="grid-overlay" class="fixed-background"></div>
+
+    <dialog id="settings-modal">
+      <article>
+        <form></form>
+        <footer>
+          <button id="close-settings">Finish</button>
+        </footer>
+      </article>
+    </dialog>
+
+    <dialog id="auto-save">
+      <article>
+        <header><h3>Save session to file?</h3></header>
+        <form></form>
+        <footer>
+          <button class="secondary" id="save-no">No</button>
+          <button id="save-yes">Yes</button>
+        </footer>
+      </article>
+    </dialog>
+
+    <div id="pwa-toast" role="alert" aria-labelledby="toast-message">
+      <div class="message">
+        <span id="toast-message"></span>
+      </div>
+      <div class="buttons">
+        <button id="pwa-refresh" type="button">Reload</button>
+        <button id="pwa-close" type="button">Close</button>
+      </div>
+    </div>
+
+    <p class="frosted-background" id="status"></p>
+
+  </body>
+</html>
