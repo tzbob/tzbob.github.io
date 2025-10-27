@@ -1,7 +1,7 @@
 {
   "name": "Delay Mirror",
   "short_name": "Delay Mirror",
-  "start_url": "/",
+  "start_url": "/warp-lens",
   "display": "standalone",
   "description": "A delayed mirror app for sports analysis",
   "lang": "en",
