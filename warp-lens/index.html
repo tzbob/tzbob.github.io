@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <title>Warp Lens</title>
-    <script type="module" crossorigin src="./assets/index-B9cSclrR.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BoCIMQTX.css">
+    <script type="module" crossorigin src="/warp-lens/assets/index-DDFE5m1V.js"></script>
+    <link rel="stylesheet" crossorigin href="/warp-lens/assets/index-D9v3zdtm.css">
   </head>
   <body>
     <progress hidden></progress>
@@ -39,7 +39,7 @@
               <button id="toggle-play" href="#" onclick="return false;">
                 <svg class="feather">
                   <use
-                    href="./assets/feather-sprite-BfIm3Xr9.svg#pause"
+                    href="/warp-lens/assets/feather-sprite-BfIm3Xr9.svg#pause"
                   />
                 </svg>
               </button>
@@ -48,7 +48,7 @@
               <button id="save" href="#" onclick="return false;">
                 <svg class="feather">
                   <use
-                    href="./assets/feather-sprite-BfIm3Xr9.svg#save"
+                    href="/warp-lens/assets/feather-sprite-BfIm3Xr9.svg#save"
                   />
                 </svg>
               </button>
@@ -57,7 +57,7 @@
               <button id="expand-settings" href="#" onclick="return false;">
                 <svg class="feather">
                   <use
-                    href="./assets/feather-sprite-BfIm3Xr9.svg#settings"
+                    href="/warp-lens/assets/feather-sprite-BfIm3Xr9.svg#settings"
                   />
                 </svg>
               </button>
@@ -80,11 +80,12 @@
       </article>
     </dialog>
 
-    <dialog id="settings-modal">
+    <dialog id="settings-modal" class="container-fluid">
       <article>
+        <header><p>Settings</p></header>
         <form></form>
-        <footer>
-          <button id="close-settings">Finish</button>
+        <footer class="frosted-background">
+          <button id="close-settings">Done</button>
         </footer>
       </article>
     </dialog>

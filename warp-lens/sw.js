@@ -1,7 +1,7 @@
 const cacheName = "static-assets-cache-v1";
 
 async function fetchAssets(type) {
-  const response = await fetch("/"); // You could make a request to the root
+  const response = await fetch("./"); // You could make a request to the root
   const text = await response.text();
 
   let assets = [];
@@ -27,7 +27,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(cacheName).then(async (cache) => {
       console.log("[Service Worker] Caching static assets");
-      await cache.addAll(["/", "/index.html", "/favicons.svg"]);
+      await cache.addAll(["./", "./index.html", "./favicons.svg"]);
 
       const cssAssets = await fetchAssets("css");
       await cache.addAll(cssAssets);
