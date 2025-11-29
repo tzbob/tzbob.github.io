@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="./manifest.json" />
     <title>Warp Lens</title>
-    <script type="module" crossorigin src="/warp-lens/assets/index-DDFE5m1V.js"></script>
-    <link rel="stylesheet" crossorigin href="/warp-lens/assets/index-D9v3zdtm.css">
+    <script type="module" crossorigin src="/warp-lens/assets/index-Bvlvb5EF.js"></script>
+    <link rel="stylesheet" crossorigin href="/warp-lens/assets/index-BSdHmN_0.css">
   </head>
   <body>
     <progress hidden></progress>
@@ -54,6 +54,15 @@
               </button>
             </li>
             <li>
+              <button id="toggle-scrubbing" href="#" onclick="return false;">
+                <svg class="feather">
+                  <use
+                    href="/warp-lens/assets/feather-sprite-BfIm3Xr9.svg#git-commit"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
               <button id="expand-settings" href="#" onclick="return false;">
                 <svg class="feather">
                   <use
@@ -68,9 +77,19 @@
     </header>
 
     <video id="preview" class="preview" autoplay playsinline></video>
-    <canvas id="preview-canvas" class="preview"></canvas>
     <video id="delayed" class="fixed-background" playsinline></video>
+    <canvas id="preview-canvas" class="fixed-background"></canvas>
     <div id="grid-overlay" class="fixed-background"></div>
+
+    <input
+      id="scrubber"
+      type="range"
+      min="0"
+      max="100"
+      step="any"
+      enabled="true"
+      hidden="true"
+    />
 
     <dialog id="fatal-error-modal">
       <article>
